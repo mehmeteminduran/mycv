@@ -1,20 +1,20 @@
 import { NestFactory } from '@nestjs/core';
-import { ValidationPipe } from '@nestjs/common';
 import { AppModule } from './app.module';
-const cookieSession = require('cookie-session');
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  app.use(cookieSession({
-    keys: ['asdswdacr']
-  }))
+  // Below cookieSession and ValidationPipe codes moved to app.module.ts file to be used by e2e tests also
 
-  app.useGlobalPipes(
-    new ValidationPipe({
-      whitelist: true
-    })
-  );
+  // app.use(cookieSession({
+  //   keys: ['asdswdacr']
+  // }))
+
+  // app.useGlobalPipes(
+  //   new ValidationPipe({
+  //     whitelist: true
+  //   })
+  // );
   
   await app.listen(3000);
 }
