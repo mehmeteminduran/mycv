@@ -1,13 +1,19 @@
 import { User } from "src/users/user.entity";
-import { Entity,Column, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
 
 @Entity()
 export class Report {
     @PrimaryGeneratedColumn()
-    id:number;
+    id: number;
+
+    @Column({ default: false })
+    approved: boolean;
 
     @Column()
-    price:number; 
+    price: number;
+
+    @Column()
+    make: string;
 
     @Column()
     model: string;
